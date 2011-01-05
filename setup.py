@@ -2,7 +2,9 @@ import os
 
 from setuptools import setup, find_packages
 setup(name='isotoma.plone.defang',
-      version="1.0.1",
+      author="Doug Winter",
+      author_email="doug.winter@isotoma.com",
+      version="1.0.3",
       description="modify ZODBs for environment migration",
       long_description = open("README.rst").read() + "\n" + \
                          open("CHANGES.txt").read(),
@@ -13,6 +15,10 @@ setup(name='isotoma.plone.defang',
         "License :: OSI Approved :: Apache Software License",
       ],
       packages=find_packages(),
+      package_data = {
+        '': ['README.rst', 'CHANGES.txt'],
+      },
+      namespace_packages = ['isotoma', 'isotoma.plone'],
       entry_points = {
         'console_scripts': ['defang=isotoma.plone.defang:main']
         },

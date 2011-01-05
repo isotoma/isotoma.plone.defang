@@ -1,3 +1,8 @@
+1.0.3
+-----
+
+    * Added call to root_handler so that environment is correctly set up by zope.  this was something of a wild guess, there is XML in the zope configuration software!
+
 1.0.1
 -----
 

@@ -12,11 +12,12 @@ from fangs import *
 
 import App.config
 from Zope2.Startup import zopectl
+from Zope2.Startup.handlers import root_handler
 
 usage = "%prog [options] zodbfile"
 
 def initialize_zope(instance, zconfig, productdistros):
-    """ This is about 75% evil. We set up enough of zope's insane startup
+    """ This is about 85% evil (+/- 10%). We set up enough of zope's insane startup
     process that we can access all our Python and unpickle stuff, but not so
     much that it opens the ZODB. """
     if productdistros is not None:
@@ -28,6 +29,7 @@ def initialize_zope(instance, zconfig, productdistros):
     options.configfile = zconfig
     sys.argv = sys.argv[:1]
     options.realize()
+    root_handler(options.configroot) # wild guess
     App.config.setConfiguration(options.configroot)
 
 def main(instance, zconfig, fangs, productdistros=None):
